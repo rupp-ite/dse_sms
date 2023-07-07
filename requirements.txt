@@ -1,0 +1,7 @@
+flask
+flask-sqlalchemy
+flask-restx
+flask-admin
+flask-wtf
+cryptography
+psycopg2-binary
