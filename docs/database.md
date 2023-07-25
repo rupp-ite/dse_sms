@@ -40,8 +40,10 @@
     user:admin
     password:Rupp2357.!
     port:3306
+    database:smsdb
 ### PostgreSQL Server
     host:pgadmin.komroung.com
     user:admin
     password:Rupp2357.!
     port:5432
+    database:smsdb
