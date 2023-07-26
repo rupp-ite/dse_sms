@@ -1,6 +1,7 @@
 from urllib.parse import quote_plus
-import os
+from os.path import dirname, abspath,join
 
+BASEDIR = abspath(dirname(dirname(__file__)))
 class DB:
     def postgres_uri(self):
         dialect = 'postgresql'
@@ -31,7 +32,5 @@ class DB:
         return f'{dialect}://:{password}@{host}:{port}/{db}'
 
     def sqlite_uri(self):
-        BASEDIR = os.path.abspath(os.path.dirname('.'))
-        db_path = os.path.join(BASEDIR,'app','data', 'db.db')
-        con = f'sqlite:///{db_path}'
-        return con
+        db_path = join(BASEDIR,'data', 'smsdb.db')
+        return f'sqlite:///{db_path}'
