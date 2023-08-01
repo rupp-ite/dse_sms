@@ -6,7 +6,7 @@ class Student(db.Model):
     first_name = db.Column(db.String(100),nullable = False)
     last_name = db.Column(db.String(100),nullable = False)
     gender_id = db.Column(db.Integer,db.ForeignKey('gender.id'),nullable = False)
-    student_card = db.relationship('StudentCard',backref='student',lazy=True)
+    student_card = db.relationship('StudentCard',backref='student',lazy=True,uselist=False)
     email = db.Column(db.String(100), nullable = False, unique = True)
     age = db.Column(db.Integer, nullable = False)
     created_at = db.Column(db.DateTime)
@@ -33,7 +33,7 @@ class Gender(db.Model):
 
 class StudentCard(db.Model):
     id = db.Column(db.Integer,primary_key = True)
-    card_number = db.Column(db.String(20),unique = True)
+    card_number = db.Column(db.String(20),unique = True,nullable=False)
     student_id = db.Column(db.Integer,db.ForeignKey('student.id'),nullable=False)
     issued_date = db.Column(db.Date,nullable = False)
     expired_date = db.Column(db.Date,nullable = False)

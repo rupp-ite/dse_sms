@@ -22,6 +22,16 @@ class DB:
         password = 'Rupp2357.!'
         db_uri = f'{dialect}://{user}:{quote_plus(password)}@{host}:{port}/{db}'
         return db_uri
+    
+    def mysql_connector_uri(self):
+        dialect = 'mysql+mysqlconnector'
+        host = 'mysql.cjyu2g4g0pi9.ap-southeast-1.rds.amazonaws.com'
+        db = 'smsdb'
+        user = 'admin'
+        port = '3306'
+        password = 'Rupp2357.!'
+        db_uri = f'{dialect}://{user}:{quote_plus(password)}@{host}:{port}/{db}'
+        return db_uri
 
     def redis_uri(self):
         dialect = 'redis'
