@@ -1,7 +1,9 @@
 ## Flask-SQLALCHEMY INSTALLATION
-
 ### Installing the packages
     pip install flask-sqlalchemy
+#### PostgreSQL Driver
+    pip install psycopg2
+    pip install psycopg2-binary
 #### MySQL Driver
 ##### mysqlclient
     # MAC OS
