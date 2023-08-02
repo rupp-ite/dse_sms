@@ -34,7 +34,7 @@ class Gender(db.Model):
 class StudentCard(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     card_number = db.Column(db.String(20),unique = True,nullable=False)
-    student_id = db.Column(db.Integer,db.ForeignKey('student.id'),nullable=False)
+    student_id = db.Column(db.Integer,db.ForeignKey('student.id'),unique = True,nullable=False)
     issued_date = db.Column(db.Date,nullable = False)
     expired_date = db.Column(db.Date,nullable = False)
     created_at = db.Column(db.DateTime)

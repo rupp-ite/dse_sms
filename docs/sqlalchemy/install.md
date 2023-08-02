@@ -1,5 +1,4 @@
 ## Flask-SQLALCHEMY INSTALLATION
-
 ### Installing the packages
     pip install flask-sqlalchemy
 #### PostgreSQL Driver
