@@ -28,8 +28,53 @@
   - `lazy='joined'`: This strategy performs a SQL JOIN between the two related tables when querying the parent model. It fetches the related data along with the parent data in a single query. This can be more efficient when you know that you will always need the related data together with the parent data.
   - `lazy='dynamic'`: This strategy returns a query object instead of a collection of objects. When you access the attribute representing the relationship, you get a query object that you can further filter, paginate, or perform other database operations on. The related data is loaded from the database when you execute the query.
 #### 1. One-to-Many Relationships
+      class Parent(Base):
+        __tablename__ = 'left'__
+        id = Column(Integer, primary_key=True)
+
+        children = relationship("Child", back_populates="parent")
+
+      class Child(Base):
+        __tablename__ = 'right'
+        id = Column(Integer, primary_key=True)
+        left_id = Column(Integer, ForeignKey('left.id'), unique=True, uselist=False)
+
+        parent = relationship("Parent", back_populates="children")
 #### 2. One-to-One Relationships
 - Use `uselist=False` in `relationship` mapping
 - `unique=True` for Foreign Key of the relationship
 
+      class Parent(Base):
+        __tablename__ = 'left'__
+        id = Column(Integer, primary_key=True)
+
+        child = relationship("Child", back_populates="parent")
+
+      class Child(Base):
+        __tablename__ = 'right'
+        id = Column(Integer, primary_key=True)
+        left_id = Column(Integer, ForeignKey('left.id'), unique=True, uselist=False)
+
+        parent = relationship("Parent", back_populates="child")
+
 #### 3. Many-to-Many Replationships
+    class Association(Base):
+      __tablename__ = 'association'
+      left_id = Column(Integer, ForeignKey('left.id'), primary_key=True)
+      right_id = Column(Integer, ForeignKey('right.id'), primary_key=True)
+      extra_data = Column(String(50))
+
+      child = relationship("Child", back_populates="parents")
+      parent = relationship("Parent", back_populates="children")
+
+    class Parent(Base):
+      __tablename__ = 'left'
+      id = Column(Integer, primary_key=True)
+
+      children = relationship("Association", back_populates="parent")
+
+    class Child(Base):
+      __tablename__ = 'right'
+      id = Column(Integer, primary_key=True)
+
+      parents = relationship("Association", back_populates="child")
