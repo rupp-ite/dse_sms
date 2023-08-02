@@ -28,7 +28,7 @@ class Menu(db.Model):
     updated_at = db.Column(db.DateTime)
     updated_by = db.Column(db.Integer)
     
-    sub_menus = db.relationship('SubMenu', backref='menu', lazy=True)
+    sub_menus = db.relationship('SubMenu', back_populates='menu')
     
     def __repr__(self):
         return f'Menu ({self.id},{self.name_latin},{self.order})'
