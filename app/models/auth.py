@@ -36,9 +36,9 @@ class Menu(db.Model):
 # Association Object
 class ProfileAccessRight(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    profile_id = db.Column(db.Integer, db.ForeignKey('profile.id'), primary_key=True)
-    sub_menu_id = db.Column(db.Integer, db.ForeignKey('sub_menu.id'), primary_key=True)
-    right_id = db.Column(db.Integer, db.ForeignKey('right.id'), primary_key=True)
+    profile_id = db.Column(db.Integer, db.ForeignKey('profile.id'))
+    sub_menu_id = db.Column(db.Integer, db.ForeignKey('sub_menu.id'))
+    right_id = db.Column(db.Integer, db.ForeignKey('right.id'))
     created_at = db.Column(db.DateTime)
     created_by = db.Column(db.Integer)
     updated_at = db.Column(db.DateTime)
