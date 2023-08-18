@@ -1,5 +1,4 @@
 from app import db
-
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     login_name = db.Column(db.String(100), unique=True, nullable=False)
